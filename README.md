@@ -28,7 +28,7 @@
 
 ---
 
-## 🗄️ MCP 连接库
+## 🔗 MCP 连接库
 
 支持接入主流法律数据库的 Model Context Protocol 工具：
 
