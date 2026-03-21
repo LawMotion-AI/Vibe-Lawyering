@@ -9,7 +9,7 @@
 [![Stars](https://img.shields.io/github/stars/zhouziyue233/Vibe-Lawyering?style=social)](https://github.com/zhouziyue233/Vibe-Lawyering)
 [![Contributors](https://img.shields.io/github/contributors/zhouziyue233/Vibe-Lawyering)](https://github.com/zhouziyue233/Vibe-Lawyering/graphs/contributors)
 
-> 聚合法律人所需的 Agent Skills、法律数据库 MCP 工具与 AI/编程教育资源的开源社区项目
+> 聚合法律人所需的 Agent Skills、法律数据库 MCP 工具与 AI/计算机教育资源的开源社区项目
 
 [**English**](README_EN.md) · [快速开始](#-快速开始) · [贡献指南](CONTRIBUTING.md)
 
@@ -24,7 +24,7 @@
 - [快速开始](#-快速开始)
 - [Agent Skills](#-agent-skills)
 - [MCP 资源库](#-mcp-资源库)
-- [AI & 编程课程](#-ai--编程课程)
+- [AI & 计算机课程](#-ai--计算机课程)
 - [如何贡献](#-如何贡献)
 - [社区](#-社区)
 - [许可证](#-许可证)
@@ -49,7 +49,7 @@
 Vibe-Lawyering/
 ├── 📁 agent-skills/        # 法律 AI Agent 技能库
 ├── 📁 mcp-resources/       # 法律数据库 MCP 工具
-├── 📁 courses/             # AI & 编程课程资源
+├── 📁 courses/             # AI & 计算机课程资源
 ├── 📄 CONTRIBUTING.md      # 贡献指南
 └── 📄 LICENSE              # MIT 许可证
 ```
@@ -62,7 +62,7 @@ Vibe-Lawyering/
 
 1. 浏览 [`agent-skills/`](agent-skills/README.md) 目录，找到你需要的技能
 2. 按照技能页面的说明，复制 Prompt 或安装配置文件
-3. 在你使用的 AI 工具（Claude、GPT、Coze 等）中加载该技能
+3. 在你使用的 agentic AI 工具（Claude、GPT、Kimi等）中加载该技能
 
 ### 接入法律数据库 MCP
 
@@ -81,11 +81,7 @@ Vibe-Lawyering/
 
 | 技能 | 描述 | 难度 |
 |------|------|------|
-| [合同审查](agent-skills/README.md#合同审查) | 自动标注风险条款，生成修改建议 | ⭐⭐ |
-| [法律研究](agent-skills/README.md#法律研究助手) | 案例检索、法规梳理、综述生成 | ⭐⭐ |
-| [合规审查](agent-skills/README.md#合规风险评估) | 商业行为合规风险评估 | ⭐⭐⭐ |
-| [NDA 快速筛查](agent-skills/README.md#nda-快速筛查) | 保密协议关键条款一键识别 | ⭐ |
-| [诉讼辅助](agent-skills/README.md#诉讼文书起草) | 裁判文书分析、起诉状草拟 | ⭐⭐⭐ |
+
 
 👉 [查看全部 Agent Skills →](agent-skills/README.md)
 
@@ -96,23 +92,17 @@ Vibe-Lawyering/
 | 数据库 | MCP 状态 | 说明 |
 |--------|----------|------|
 | 北大法宝 | 🟡 开发中 | 法规、案例、期刊全覆盖 |
-| 中国裁判文书网 | ✅ 可用 | 裁判文书公开数据 |
-| 国家法律法规数据库 | ✅ 可用 | 全国人大官方法规库 |
-| EUR-Lex | ✅ 可用 | 欧盟法律数据库 |
 | Westlaw | 🔴 计划中 | 美国法律数据库 |
 
 👉 [查看全部 MCP 资源 →](mcp-resources/README.md)
 
 ---
 
-## 🎓 AI & 编程课程
+## 🎓 AI & 计算机课程
 
 | 课程 | 适合人群 | 时长 |
 |------|----------|------|
-| [AI 工具入门：法律人的提示词技巧](courses/ai-for-lawyers.md#提示词技巧) | 所有法律人 | 2 小时 |
-| [用 Claude 辅助合同审查](courses/ai-for-lawyers.md#合同审查实战) | 律师、法务 | 3 小时 |
-| [Python 零基础：处理法律文本数据](courses/coding-for-lawyers.md#python-入门) | 零基础 | 8 小时 |
-| [构建你的第一个法律 AI 工具](courses/coding-for-lawyers.md#构建法律工具) | 中级 | 10 小时 |
+
 
 👉 [查看全部课程资源 →](courses/README.md)
 
