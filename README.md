@@ -38,8 +38,8 @@
 | 模块 | 内容 |
 |------|------|
 | ⚡ **Agent Skills** | 精选的法律领域 AI Agent 技能配置，可直接接入 Claude、GPT 等 |
-| 🗄️ **MCP 资源库** | 法律数据库 MCP 工具列表与接入指南（北大法宝、威科先行、法信等） |
-| 🎓 **AI & 编程课程** | 面向法律人的零基础 AI 使用与编程入门课程资源 |
+| 🗄️ **MCP 资源库** | 法律数据库 MCP 工具列表与接入指南（北大法宝、威科先行、Lexi、Westlaw等） |
+| 🎓 **AI & 编程课程** | 面向法律人的零基础AI工具使用与计算机入门课程资源 |
 
 ---
 
@@ -70,10 +70,10 @@ Vibe-Lawyering/
 2. 按照 [`setup-guides/`](mcp-resources/setup-guides/) 中的教程完成接入
 3. 结合 Agent Skills 实现"检索 + 分析"一体化工作流
 
-### 学习 AI & 编程
+### 学习 AI & 计算机科学
 
 1. 进入 [`courses/`](courses/README.md) 按照学习路径选择课程
-2. 无需编程基础，法律场景贯穿全程
+2. 无需编程基础
 
 ---
 
@@ -131,8 +131,7 @@ Vibe-Lawyering/
 ## 💬 社区
 
 - 💬 [GitHub Discussions](https://github.com/zhouziyue233/Vibe-Lawyering/discussions)
-- 🐦 [Twitter / X](https://twitter.com/VibeLaywering)
-- 📮 合作意向：`contact@vibe-lawyering.dev`
+- 📮 合作意向：`zhouziyue1031@gmail.com`
 
 ---
 
