@@ -24,7 +24,6 @@
 - [快速开始](#-快速开始)
 - [Agent Skills](#-agent-skills)
 - [MCP 资源库](#-mcp-资源库)
-- [MCP Servers](#️-mcp-servers)
 - [AI & 编程课程](#-ai--编程课程)
 - [如何贡献](#-如何贡献)
 - [社区](#-社区)
@@ -40,7 +39,6 @@
 |------|------|
 | ⚡ **Agent Skills** | 精选的法律领域 AI Agent 技能配置，可直接接入 Claude、GPT 等 |
 | 🗄️ **MCP 资源库** | 法律数据库 MCP 工具列表与接入指南（北大法宝、威科先行、法信等） |
-| 🛠️ **MCP Servers** | 可直接运行的法律数据库 MCP Server 实现（裁判文书网、EUR-Lex 等） |
 | 🎓 **AI & 编程课程** | 面向法律人的零基础 AI 使用与编程入门课程资源 |
 
 ---
@@ -55,17 +53,10 @@ Vibe-Lawyering/
 │   ├── compliance-check    # 合规审查
 │   ├── nda-triage          # NDA 快速筛查
 │   └── litigation-support  # 诉讼辅助
-├── 📁 mcp-resources/       # 法律数据库 MCP 工具索引
+├── 📁 mcp-resources/       # 法律数据库 MCP 工具
 │   ├── chinese-legal-dbs   # 中国法律数据库
 │   ├── international-dbs   # 国际法律数据库
 │   └── setup-guides        # 配置接入指南
-├── 📁 mcp-servers/         # MCP Server 可运行实现
-│   ├── chinese-legal/      # 中国法律数据库 Server
-│   │   ├── judgment-docs   # 裁判文书网（✅ 可用）
-│   │   └── national-laws   # 国家法律法规数据库（✅ 可用）
-│   ├── international/      # 国际法律数据库 Server
-│   │   └── eurlex          # EUR-Lex 欧盟法律（✅ 可用）
-│   └── templates/          # 自定义 Server 开发模板
 ├── 📁 courses/             # AI & 编程课程资源
 │   ├── ai-for-lawyers      # 法律人 AI 应用
 │   └── coding-for-lawyers  # 法律人编程入门
@@ -136,22 +127,6 @@ Vibe-Lawyering/
 | EUR-Lex | ✅ 可用 | 欧盟法律数据库 |
 
 👉 [查看全部 MCP 资源 →](mcp-resources/README.md)
-
----
-
-## 🛠️ MCP Servers
-
-可直接运行的法律数据库 MCP Server 实现，接入后可在 Claude Desktop、Cursor 等工具中直接调用：
-
-| Server | 数据库 | 状态 | 主要功能 |
-|--------|--------|------|----------|
-| [judgment-docs](mcp-servers/chinese-legal/judgment-docs/) | 中国裁判文书网 | ✅ 可用 | 裁判文书全文检索、摘要提取 |
-| [national-laws](mcp-servers/chinese-legal/national-laws/) | 国家法律法规数据库 | ✅ 可用 | 法律条文检索、有效性查询 |
-| [eurlex](mcp-servers/international/eurlex/) | EUR-Lex 欧盟法律 | ✅ 可用 | 欧盟法规检索、GDPR 条文获取 |
-| pkulaw | 北大法宝 | 🟡 开发中 | — |
-| wkinfo | 威科先行 | 🟡 开发中 | — |
-
-👉 [查看全部 MCP Servers →](mcp-servers/README.md) · [开发新 Server →](mcp-servers/templates/)
 
 ---
 
