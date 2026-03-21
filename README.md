@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚖️ Vibe-Lawyering
+# ⚖️ Vibe-Lawyering 🤖
 
 **法律人的 AI 工具箱**
 
