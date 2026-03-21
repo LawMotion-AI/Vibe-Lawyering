@@ -167,6 +167,17 @@
 
 ## 外部优质资源推荐 | External Resources
 
+### 🤖 Claude Code & AI Agent 工具
+
+| 资源 | 类型 | 语言 | 费用 |
+|------|------|------|------|
+| [Claude Code 系列教程（微信公众号合集）](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzkzMjg2NTcxNA==&scene=1&album_id=4406622888632549382&count=3#wechat_redirect) | 教程合集 | 中文 | 免费 |
+| [Claude Code 官方文档](https://docs.anthropic.com/en/docs/claude-code/overview) | 官方文档 | EN | 免费 |
+
+> 💡 **Claude Code 是什么？** Anthropic 推出的命令行 AI 编程工具，可在终端中直接调用 Claude 完成代码编写、文件操作、项目管理等任务，法律人可借助它快速搭建自动化工具，无需深厚编程背景。
+
+---
+
 ### 通用 AI 技能
 
 | 资源 | 类型 | 语言 | 费用 |
