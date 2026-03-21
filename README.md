@@ -11,7 +11,7 @@
 
 聚合法律人所需的 Agent Skills、法律数据库 MCP 工具与 AI 教育资源的开源社区项目
 
-[Agent Skills](#agent-skills) · [MCP 资源库](#mcp-servers) · [AI 学习资源](#ai-学习资源) · [贡献指南](CONTRIBUTING.md)
+[Agent Skills](#-agent-skills) · [MCP 资源库](#-MCP-资源库) · [AI 学习资源](#-ai-学习资源) · [贡献指南](CONTRIBUTING.md)
 
 </div>
 
