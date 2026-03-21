@@ -11,8 +11,7 @@
 
 聚合法律人所需的 Agent Skills、法律数据库 MCP 工具与 AI 教育资源的开源社区项目
 
-[Agent Skills](#-agent-skills) · [MCP 资源库](<img width="1222" height="820" alt="image" src="https://github.com/user-attachments/assets/aca598cc-c69c-4899-8b29-ce04f4c0623c" />
-) · [AI 学习资源](#-ai-学习资源) · [贡献指南](CONTRIBUTING.md)
+[Agent Skills](#-agent-skills) · [MCP 连接库](#-mcp-连接库) · [AI 学习资源](#-ai-学习资源) · [贡献指南](CONTRIBUTING.md)
 
 </div>
 
@@ -29,7 +28,7 @@
 
 ---
 
-## 🗄️ MCP 资源库
+## 🗄️ MCP 连接库
 
 支持接入主流法律数据库的 Model Context Protocol 工具：
 
