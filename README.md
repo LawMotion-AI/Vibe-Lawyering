@@ -48,7 +48,7 @@
 | [北大法宝](https://mcp.pkulaw.com/console) | ✅ 可用 | 法规检索、案例查询、法学期刊全覆盖 |
 | [企查查](https://openapi.qcc.com/services/pre/mcp) | ✅ 可用 | 尽职调查相关（企业信息、涉诉风险、知产数据等）|
 
-👉 [查看全部 MCP 资源 →](mcp-servers/README.md)
+👉 [MCP 接入教程 →](mcp-servers/README.md)
 
 ---
 
