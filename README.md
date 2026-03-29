@@ -9,7 +9,7 @@
 [![Stars](https://img.shields.io/github/stars/zhouziyue233/Vibe-Lawyering?style=social)](https://github.com/zhouziyue233/Vibe-Lawyering)
 [![Contributors](https://img.shields.io/github/contributors/zhouziyue233/Vibe-Lawyering)](https://github.com/zhouziyue233/Vibe-Lawyering/graphs/contributors)
 
-聚合法律人所需的 Agent Skills、法律数据库 MCP 工具与 AI 教育资源的开源社区项目
+聚合法律人所需的优质 Agent Skills、法律数据库 MCP 工具与 AI 教育资源的开源社区项目
 
 [Agent Skills](#-agent-skills) · [MCP 连接库](#-mcp-连接库) · [AI 学习资源](#-ai-学习资源) · [贡献指南](CONTRIBUTING.md)
 
