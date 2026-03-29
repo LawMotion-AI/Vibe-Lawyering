@@ -62,7 +62,7 @@ By participating in this project, you agree to:
 - 包含接入步骤说明
 - 注明数据库的授权使用要求
 
-**文件位置：** `mcp-resources/` 目录下
+**文件位置：** `mcp-servers/` 目录下
 
 ---
 
