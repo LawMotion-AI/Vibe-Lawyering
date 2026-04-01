@@ -11,7 +11,7 @@ from datetime import datetime
 # 添加脚本目录到路径
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from write_revisions_xml import WPSRevisionWriter
+from internal_write_revisions_xml import WPSRevisionWriter
 
 
 def example_basic_revision():

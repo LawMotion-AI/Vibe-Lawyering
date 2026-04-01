@@ -29,56 +29,47 @@
 
 ## 使用方法
 
-### 基本用法
+### 对外唯一入口
 
-```python
-from scripts.write_revisions_xml import WPSRevisionWriter
+- 对外只暴露 `scripts/run_generate_review_docx.ps1`
+- `scripts/internal_generate_review_docx.ps1`、`scripts/internal_stage_review_inputs.ps1` 与 `scripts/internal_write_revisions_xml.py` 仅作为内部实现，不作为用户入口
+- 包装器内置中文路径兼容、XML 直改、打包与自检，用户无需理解底层实现
 
-# 创建修订写入器
-with WPSRevisionWriter('input.docx', 'output.docx') as writer:
-    # 添加删除标记
-    del_xml = writer.add_deletion('原条款内容')
-    
-    # 添加插入标记
-    ins_xml = writer.add_insertion('修订后条款内容')
-    
-    # 添加批注
-    comment_id = writer.add_comment('问题描述 + 风险分析 + 修改建议')
-    
-    # 完成并保存
-    writer.finalize()
+### Windows / macOS 调用方式
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\run_generate_review_docx.ps1 `
+  -Source "原合同.docx" `
+  -Instructions ".\references\review-instructions.example.json" `
+  -Output "原合同-修订批注版.docx"
 ```
 
-### 从 JSON 配置创建修订
+```powershell
+pwsh -File ./scripts/run_generate_review_docx.ps1 `
+  -Source "source.docx" `
+  -Instructions "./references/review-instructions.example.json" `
+  -Output "reviewed.docx"
+```
 
-```python
-from scripts.write_revisions_xml import create_revision_from_json
-import json
+### 指令文件格式
 
-revisions = [
+```json
+{
+  "author": "合同审核AI",
+  "operations": [
     {
-        'type': 'delete',
-        'text': '原条款内容',
-        'location': {'paragraph': 1, 'run': 0}
-    },
-    {
-        'type': 'insert',
-        'text': '修订后条款内容',
-        'location': {'paragraph': 1, 'run': 0}
-    },
-    {
-        'type': 'comment',
-        'text': '需要批注的文本',
-        'comment': '问题：该条款存在法律风险\n风险：可能导致违约责任不清\n建议：修改为...',
-        'location': {'paragraph': 2, 'run': 1}
+      "mode": "revision_comment",
+      "anchor_text": "乙方应在验收后30日内付款。",
+      "replacement_text": "乙方应在验收合格且收到合法有效发票后10个工作日内付款。",
+      "comment": {
+        "问题": "付款条件与发票、验收标准未闭环。",
+        "风险": "易引发付款起算点争议。",
+        "修改建议": "补齐验收合格与合法有效发票两个触发条件。",
+        "建议条款": "乙方应在验收合格且收到合法有效发票后10个工作日内付款。"
+      }
     }
-]
-
-create_revision_from_json(
-    'input.docx',
-    'output.docx',
-    json.dumps(revisions, ensure_ascii=False)
-)
+  ]
+}
 ```
 
 ## XML 结构示例
@@ -88,7 +79,7 @@ create_revision_from_json(
 ```xml
 <w:p>
   <w:r>
-    <w:del w:author="审核人" w:date="2026-03-19T10:00:00Z" w:delId="1">
+    <w:del w:author="审核人" w:date="2026-03-19T10:00:00Z" w:id="1">
       <w:t>被删除的文本内容</w:t>
     </w:del>
   </w:r>
@@ -100,7 +91,7 @@ create_revision_from_json(
 ```xml
 <w:p>
   <w:r>
-    <w:ins w:author="审核人" w:date="2026-03-19T10:00:00Z" w:insId="2">
+    <w:ins w:author="审核人" w:date="2026-03-19T10:00:00Z" w:id="2">
       <w:t>新插入的文本内容</w:t>
     </w:ins>
   </w:r>
@@ -172,11 +163,18 @@ create_revision_from_json(
 5. **启用跟踪**：在 settings.xml 中启用修订跟踪
 6. **重新打包**：将修改后的文件重新打包为 DOCX
 
-## 依赖库
+## 最小环境要求
 
-```bash
-pip install lxml
-```
+- 最终用户仅需 PowerShell
+- Windows 推荐 `powershell.exe` 或 `pwsh`
+- macOS 推荐 `pwsh`
+- 不要求安装 Word / WPS / Office
+- 不要求安装 Python 即可生成最终 `docx`
+
+### 开发验证环境
+
+- 仅在开发、测试或调试内部实现时才需要 Python
+- Python 侧额外依赖：`lxml`
 
 ## 文件结构
 
@@ -184,7 +182,10 @@ pip install lxml
 contract-review-docx-auditor/
 ├── SKILL.md                          # 技能主文档
 ├── scripts/
-│   └── write_revisions_xml.py        # XML 修订写入脚本
+│   ├── run_generate_review_docx.ps1  # 对外唯一入口
+│   ├── internal_generate_review_docx.ps1
+│   ├── internal_stage_review_inputs.ps1
+│   └── internal_write_revisions_xml.py
 ├── references/
 │   └── xml-revision-spec.md          # XML 实现详细规范
 └── README.md                         # 本文件
@@ -206,7 +207,7 @@ contract-review-docx-auditor/
 
 1. **时间格式**：必须使用 ISO 8601 格式 `YYYY-MM-DDThh:mm:ssZ`
 2. **唯一 ID**：每个修订的 ID 必须唯一且为正整数
-3. **完整属性**：必须包含 author、date、delId/insId
+3. **完整属性**：必须包含 author、date、id
 4. **命名空间**：必须使用正确的 OOXML 命名空间
 5. **启用跟踪**：必须在 settings.xml 中启用 trackRevisions
 
@@ -238,6 +239,7 @@ contract-review-docx-auditor/
 2. 所有必要属性是否完整
 3. WPS 是否为最新版本
 4. 修订 ID 是否唯一
+5. 是否通过 `scripts/run_generate_review_docx.ps1` 启动，而不是直接调用内部脚本
 
 ## 许可证
 

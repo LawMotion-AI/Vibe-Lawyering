@@ -26,7 +26,7 @@
 
 #### 2.1 核心脚本
 
-**`scripts/write_revisions_xml.py`**
+**`scripts/internal_write_revisions_xml.py`**
 - WPSRevisionWriter 类：核心修订写入器
 - 支持删除、插入、批注三种修订类型
 - 自动管理修订 ID、时间戳、作者信息
@@ -217,55 +217,23 @@ with WPSRevisionWriter(input_path, output_path) as writer:
 
 ## 依赖库
 
-```bash
-pip install lxml
-```
-
 ## 使用方法
 
-### 方法 1：直接使用 WPSRevisionWriter
+### 对外入口：只使用 PowerShell 包装器
 
-```python
-from scripts.write_revisions_xml import WPSRevisionWriter
-
-with WPSRevisionWriter('input.docx', 'output.docx') as writer:
-    writer.add_deletion('原内容')
-    writer.add_insertion('新内容')
-    writer.add_comment('批注内容')
-    writer.finalize()
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\run_generate_review_docx.ps1 `
+  -Source "原合同.docx" `
+  -Instructions ".\references\review-instructions.example.json" `
+  -Output "原合同-修订批注版.docx"
 ```
 
-### 方法 2：从 JSON 配置创建
+### 内部实现与测试
 
-```python
-from scripts.write_revisions_xml import create_revision_from_json
-import json
-
-revisions = [
-    {
-        'type': 'delete',
-        'text': '原条款',
-        'location': {'paragraph': 1, 'run': 0}
-    },
-    {
-        'type': 'insert',
-        'text': '修订后条款',
-        'location': {'paragraph': 1, 'run': 0}
-    }
-]
-
-create_revision_from_json('input.docx', 'output.docx', json.dumps(revisions))
-```
-
-### 方法 3：运行示例脚本
-
-```bash
-# 运行示例
-python scripts/example_usage.py
-
-# 运行测试
-python scripts/test_xml_revision.py
-```
+- `scripts/internal_generate_review_docx.ps1`：内部 OOXML 直改实现
+- `scripts/internal_write_revisions_xml.py`：内部 Python 实现与算法验证
+- `scripts/test_xml_revision.py`：Python 内部回归测试
+- `scripts/test_cross_entry_consistency.py`：PowerShell / Python 一致性测试
 
 ## 文件结构
 
@@ -275,9 +243,11 @@ contract-review-docx-auditor/
 ├── README.md                         # 使用说明（新增）
 ├── CHANGELOG.md                      # 更新说明（本文件，新增）
 ├── scripts/
-│   ├── write_revisions_xml.py        # 核心修订脚本（新增）
-│   ├── example_usage.py              # 使用示例（新增）
-│   └── test_xml_revision.py          # 测试脚本（新增）
+│   ├── run_generate_review_docx.ps1  # 对外唯一入口
+│   ├── internal_generate_review_docx.ps1
+│   ├── internal_stage_review_inputs.ps1
+│   ├── internal_write_revisions_xml.py
+│   └── test_xml_revision.py          # 内部测试脚本
 └── references/
     └── xml-revision-spec.md          # XML 实现规范（新增）
 ```

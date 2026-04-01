@@ -34,7 +34,7 @@ document.docx/
 ```xml
 <w:p>
   <w:r>
-    <w:del w:author="审核人" w:date="2026-03-19T10:00:00Z" w:delId="1">
+    <w:del w:author="审核人" w:date="2026-03-19T10:00:00Z" w:id="1">
       <w:t>被删除的文本内容</w:t>
     </w:del>
   </w:r>
@@ -51,7 +51,7 @@ document.docx/
 ```xml
 <w:p>
   <w:r>
-    <w:ins w:author="审核人" w:date="2026-03-19T10:00:00Z" w:insId="2">
+    <w:ins w:author="审核人" w:date="2026-03-19T10:00:00Z" w:id="2">
       <w:t>新插入的文本内容</w:t>
     </w:ins>
   </w:r>
@@ -152,8 +152,7 @@ document.docx/
 
 ### 3. ID 唯一性
 
-- `w:delId`: 删除操作 ID，必须是唯一正整数
-- `w:insId`: 插入操作 ID，必须是唯一正整数
+- `w:id`：修订操作 ID（删除/插入），必须是唯一正整数
 - `w:id` (comment): 批注 ID，必须是唯一正整数
 
 建议从 1 开始递增分配。
@@ -169,7 +168,7 @@ document.docx/
 每个修订标记必须包含：
 - 作者信息 (`w:author`)
 - 时间戳 (`w:date`)
-- 唯一 ID (`w:delId` 或 `w:insId`)
+- 唯一 ID (`w:id`)
 
 缺少任何一项都可能导致 WPS 无法正确识别修订。
 

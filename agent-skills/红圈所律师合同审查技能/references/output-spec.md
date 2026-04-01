@@ -26,33 +26,26 @@
 - 不依赖当前电脑是否安装 Office
 - 不依赖当前运行模型是否“知道如何点界面”
 
-默认脚本入口：
+对外脚本入口：
 
-- `scripts/generate_review_docx.ps1`
-- `scripts/stage_review_inputs.ps1`
+- `scripts/run_generate_review_docx.ps1`
 - 示例指令：`references/review-instructions.example.json`
 
-其中 `scripts/generate_review_docx.ps1` 在检测到源文件、指令文件或输出路径含非 ASCII 字符时，应自动调用 `scripts/stage_review_inputs.ps1`，先在英文临时路径完成 staging，再执行 XML 直改和最终回拷。
+其中 `scripts/run_generate_review_docx.ps1` 是对外唯一入口；其内部会调用 `scripts/internal_generate_review_docx.ps1` 完成 XML 直改。`scripts/internal_generate_review_docx.ps1` 在检测到源文件、指令文件或输出路径含非 ASCII 字符时，应自动调用 `scripts/internal_stage_review_inputs.ps1`，先在英文临时路径完成 staging，再执行 XML 直改和最终回拷。
 
 执行规则：
 
-- 不做单独环境检测，直接运行 `scripts/generate_review_docx.ps1`
+- 不做单独环境检测，直接运行 `scripts/run_generate_review_docx.ps1`
 - 脚本运行时优先直接尝试 `.NET ZipArchive`
 - 若 `.NET ZipArchive` 运行失败，则自动回退到 `Shell.Application`
 - 若两种方式都失败，则直接报错，不退化为人工打开 Word/WPS 点击界面
 
-中文路径预处理示例：
-
-```powershell
-powershell.exe -ExecutionPolicy Bypass -File .\scripts\stage_review_inputs.ps1 `
-  -SourcePattern ".\*.docx" `
-  -InstructionsPattern ".\*review*.json"
-```
+中文路径预处理由 `scripts/run_generate_review_docx.ps1` 自动完成，用户不需要直接调用内部 staging 脚本。
 
 推荐调用方式：
 
 ```powershell
-powershell.exe -ExecutionPolicy Bypass -File .\scripts\generate_review_docx.ps1 `
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\run_generate_review_docx.ps1 `
   -Source "原合同.docx" `
   -Instructions "review-instructions.json" `
   -Output "原合同-修订批注版.docx" `
@@ -170,9 +163,9 @@ powershell.exe -ExecutionPolicy Bypass -File .\scripts\generate_review_docx.ps1 
 - 修改 `word/document.xml`
 - 将原文本包装为 `w:del`
 - 将新文本包装为 `w:ins`
-- 为每条修订写入 `id`
-- 为每条修订写入 `author`
-- 为每条修订写入 `date`
+- 为每条修订写入 `w:id`
+- 为每条修订写入 `w:author`
+- 为每条修订写入 `w:date`
 - 修改 `word/settings.xml`
 - 在 `word/settings.xml` 中加入 `w:trackRevisions`
 
