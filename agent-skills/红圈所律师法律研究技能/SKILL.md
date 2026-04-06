@@ -1,5 +1,5 @@
 ---
-name: "Wulilaw-legal-research"
+name: "Red-Circle-Legal-Research"
 description: "开展法律检索、时效审查、法律备忘录写作、模板输出与结论快报。适用于按国别或法律领域分析问题、生成正式研究结果时。"
 ---
 
